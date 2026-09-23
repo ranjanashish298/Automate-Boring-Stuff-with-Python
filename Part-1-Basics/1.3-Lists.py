@@ -1,3 +1,13 @@
+# Notes
+
+# Variables will contain references to list rather than list values
+# themselves. But for strings and integer values, variables simply contain the
+# string or integer value. Python uses references whenever variables must
+# store values of mutable data types, such as lists or dictionaries. For values
+# of immutable data types such as strings, integers, or tuples, Python vari-
+# ables will store the value itself.
+
+
 #allMyFriends.py
 #Enter names of all your friends in a sorted order! 
 
@@ -8,7 +18,7 @@ i=1
 while True:
     print(f"Enter name of your {i} friend")
     name = input()
-    #nameList = nameList + [name]
+    nameList = nameList + [name]
     nameList = nameList.append(name)
     i = i + 1
 
@@ -21,3 +31,14 @@ newList = sorted(nameList)
 for names in newList:
      print(names)
 
+
+# Comma Code
+spam = ['apples', 'bananas', 'tofu', 'cats', 4 ]
+def callTheListFunction(givenList):
+
+    for i in range(len(givenList)):
+        if i == len(givenList) - 1 :
+            spam[i] = "and "+ str(givenList[i])
+
+callTheListFunction(spam)
+print(spam)
