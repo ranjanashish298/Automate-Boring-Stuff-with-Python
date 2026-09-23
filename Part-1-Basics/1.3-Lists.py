@@ -1,4 +1,23 @@
-list = ["ashish", "ranjan", 4]
+#allMyFriends.py
+#Enter names of all your friends in a sorted order! 
 
-for i in list:
-    print((i*2))
+nameList = []
+
+i=1
+
+while True:
+    print(f"Enter name of your {i} friend")
+    name = input()
+    #nameList = nameList + [name]
+    nameList = nameList.append(name)
+    i = i + 1
+
+    if name == '':
+        break
+
+# Sort the names
+newList = sorted(nameList)
+
+for names in newList:
+     print(names)
+
