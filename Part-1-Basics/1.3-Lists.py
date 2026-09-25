@@ -18,14 +18,14 @@ i=1
 while True:
     print(f"Enter name of your {i} friend")
     name = input()
-    nameList = nameList + [name]
-    nameList = nameList.append(name)
+    #nameList = nameList + [name]
+    nameList.append(name)
     i = i + 1
 
     if name == '':
         break
 
-# Sort the names
+#Sort the names
 newList = sorted(nameList)
 
 for names in newList:
@@ -42,3 +42,21 @@ def callTheListFunction(givenList):
 
 callTheListFunction(spam)
 print(spam)
+
+# Have a list of names of your friends through input. 
+# ash, ranjan, tiam, royal
+# write a program that randoms the greeting messages for each name on each run.
+# Hey, Ash! What's up Royal. On each run, the corresponding messages for users change randomly. 
+
+import random
+
+namesList = ["Ashish", "Josh", "Yaros", "Kevin"]
+
+greetingMessages = ["Hey man, what's up?", 
+                    "How are you doing bro",
+                    "My brother, what's up with you?",
+                    "Yo my bro, how are you doing?"]
+
+for names in namesList:
+    randomGreetings = random.randint(0, len(greetingMessages)-1)
+    print(f"{names}, {greetingMessages[randomGreetings]}")
