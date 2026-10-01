@@ -33,19 +33,26 @@ quizQuesAndAnswers = {
 }
 
 import random
+listOfCities = []
 
-for i in range (1,6):
+for i in range (5):
     capitalList = ["","","",""]
     mcqPosition = random.randrange(0,4)
     place, realCapital = random.choice(list(quizQuesAndAnswers.items()))
+
+    while place in listOfCities:
+        place, realCapital = random.choice(list(quizQuesAndAnswers.items()))
+    listOfCities.append(place)
+
     print(f"What is the capital of {place}?")
     capitalList[mcqPosition] = realCapital
-    for i in range(0,4):
-        if capitalList[i]!="":
-            continue
-        capitalList[i] = random.choice(list(quizQuesAndAnswers.values()))
+
+    for i in range(4): 
+        if capitalList[i]=="":
+            newCapitalCity = random.choice(list(quizQuesAndAnswers.values()))
+            while newCapitalCity in capitalList:
+                newCapitalCity = random.choice(list(quizQuesAndAnswers.values()))
+            capitalList[i] = newCapitalCity
+
     for i in range(0,4):
         print(f"{i+1}. " + capitalList[i])
-
-
-#TO-DO Remove duplicate entries from both the place and capitals
