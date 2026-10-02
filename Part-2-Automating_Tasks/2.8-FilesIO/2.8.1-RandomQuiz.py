@@ -15,16 +15,6 @@ Matriculation Number:
 \n
 '''
 
-#Create 2 quizzes and quiz answers 
-# for i in range(1,3):
-#     quiz = open(f"Quiz{i}.txt", "x")
-#     #quizAns = open(f"Quiz{i}_ans.txt", "x")
-
-# for i in range(1,3):
-#     with open(f"Quiz{i}.txt", "a") as f:
-#         f.write(quizHeaderContent())
-
-
 quizQuesAndAnswers = {
     'Delhi':'New Delhi', 'Goa': 'Panaji',
     'Rajasthan' : 'Jaipur', 'Maharashtra':'Mumbai', 'Colombia': 'Bogota', 
@@ -33,26 +23,35 @@ quizQuesAndAnswers = {
 }
 
 import random
-listOfCities = []
 
-for i in range (5):
-    capitalList = ["","","",""]
-    mcqPosition = random.randrange(0,4)
-    place, realCapital = random.choice(list(quizQuesAndAnswers.items()))
 
-    while place in listOfCities:
+#for number of quizzes one would like to have! 
+for totalQuiz in range(25):
+    listOfCities = []
+    quiz = open(f"Quiz{totalQuiz+1}.txt", "w")
+    quizAns = open(f"Quiz{totalQuiz+1}_ans.txt", "w")
+
+    quiz.write(quizHeaderContent())
+    #for number of questions per Quiz 
+    for i in range (10):
+        capitalList = ["","","",""]
+        mcqPosition = random.randrange(0,4)
         place, realCapital = random.choice(list(quizQuesAndAnswers.items()))
-    listOfCities.append(place)
 
-    print(f"What is the capital of {place}?")
-    capitalList[mcqPosition] = realCapital
+        while place in listOfCities:
+            place, realCapital = random.choice(list(quizQuesAndAnswers.items()))
+        listOfCities.append(place)
+        quiz.write(f"{chr(i + 65)}. What is the capital of {place}?\n")
+        capitalList[mcqPosition] = realCapital
+        quizAns.write(f"{chr(i+65)} -- {mcqPosition+1}\n")
 
-    for i in range(4): 
-        if capitalList[i]=="":
-            newCapitalCity = random.choice(list(quizQuesAndAnswers.values()))
-            while newCapitalCity in capitalList:
+        # for the four options 
+        for i in range(4): 
+            if capitalList[i]=="":
                 newCapitalCity = random.choice(list(quizQuesAndAnswers.values()))
-            capitalList[i] = newCapitalCity
+                while newCapitalCity in capitalList:
+                    newCapitalCity = random.choice(list(quizQuesAndAnswers.values()))
+                capitalList[i] = newCapitalCity
 
-    for i in range(0,4):
-        print(f"{i+1}. " + capitalList[i])
+        for i in range(0,4):
+            quiz.write((f"\t{i+1}. " + capitalList[i]+"\n"))
