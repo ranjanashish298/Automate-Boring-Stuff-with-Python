@@ -10,7 +10,8 @@ LOCATIONS = [
     "Rhein-Neckar",
     "Darmstadt",
     "Frankfurt",
-    "Karlsruhe"
+    "Karlsruhe",
+    "Germany"
 ]
 
 POSITIONS = [

@@ -32,7 +32,10 @@ print("New jobs:", len(newFinalJobs))
 
 
 #Create the HTML Email
-email = createEmail(newFinalJobs)
-
-#send the email
-send_email(email)
+if newFinalJobs:
+    email = createEmail(newFinalJobs)
+    #send the email
+    send_email(email)
+    print("Email sent")
+else: 
+    print("No new jobs. No Email sent")
