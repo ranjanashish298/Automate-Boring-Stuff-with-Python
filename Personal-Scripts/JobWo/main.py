@@ -4,6 +4,7 @@ from processing.normalize import normalize_jobs
 from processing.deduplicate import deduplicate_jobs
 from processing.filter import filter_jobs
 from database.database import init_database, save_new_jobs
+from notifications.email import createEmail
 
 #Initialize the database 
 init_database()
@@ -28,10 +29,5 @@ print("Jobs after deduplication:", len(uniqueJobs))
 print("Relevant jobs:", len(finalJobs))
 print("New jobs:", len(newFinalJobs))
 
-for job in newFinalJobs:
-    print(job["title"])
-    print(job["company"])
-    print(job["location"])
-    print(job["date_posted"])
-    print(job["job_url"])
-    print("-" * 50)
+
+print(createEmail(newFinalJobs))
