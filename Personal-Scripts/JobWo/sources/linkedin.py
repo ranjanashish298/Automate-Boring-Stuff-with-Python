@@ -6,8 +6,8 @@ def search_linkedin(search_term, location):
         site_name=["linkedin"],
         search_term=search_term,
         location=location,
-        results_wanted=5,
-        hours_old=168,
+        results_wanted=10,
+        hours_old=144,
         country_indeed="Germany",
     )
 

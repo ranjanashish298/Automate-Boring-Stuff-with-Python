@@ -4,7 +4,8 @@ from processing.normalize import normalize_jobs
 from processing.deduplicate import deduplicate_jobs
 from processing.filter import filter_jobs
 from database.database import init_database, save_new_jobs
-from notifications.email import createEmail
+from notifications.emailTemplate import createEmail
+from notifications.smtp import send_email
 
 #Initialize the database 
 init_database()
@@ -30,4 +31,8 @@ print("Relevant jobs:", len(finalJobs))
 print("New jobs:", len(newFinalJobs))
 
 
-print(createEmail(newFinalJobs))
+#Create the HTML Email
+email = createEmail(newFinalJobs)
+
+#send the email
+send_email(email)
