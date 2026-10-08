@@ -1,4 +1,4 @@
-def is_job_relevant(job, positions, roles):
+def isJobRelevant(job, positions, roles):
     title = job["title"].lower()
 
     position_match = False
@@ -13,3 +13,13 @@ def is_job_relevant(job, positions, roles):
             role_match = True
 
     return position_match and role_match
+
+
+def filter_jobs(jobs, positions, roles):
+    relevantJobs = []
+
+    for job in jobs:
+        if isJobRelevant(job, positions, roles):
+            relevantJobs.append(job)
+
+    return relevantJobs
